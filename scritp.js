@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Preloader
     const preloader = document.querySelector('.preloader');
     window.addEventListener('load', function() {
-        preloader.style.opacity = '0';
-        preloader.style.visibility = 'hidden';
+        setTimeout(function() {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        }, 500);
     });
 
     // Mobile Menu Toggle
@@ -14,12 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener('click', function() {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
+        
+        // Toggle body overflow when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
 
+    // Close mobile menu when clicking on links
     navLinkItems.forEach(item => {
         item.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
@@ -33,10 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');
     window.addEventListener('scroll', function() {
         let current = '';
+        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 300) {
+            
+            if (window.scrollY >= sectionTop - 300) {
                 current = section.getAttribute('id');
             }
         });
@@ -52,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Back to Top Button
     const backToTopBtn = document.querySelector('.back-to-top');
     window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
+        if (window.scrollY > 300) {
             backToTopBtn.classList.add('active');
         } else {
             backToTopBtn.classList.remove('active');
@@ -131,6 +144,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
+    // Handle window resize
+    function handleResize() {
+        // Close mobile menu if window is resized to desktop size
+        if (window.innerWidth > 768) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Recalculate animations on resize
+        animateOnScroll();
+    }
+    
+    // Add event listeners
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Run once on page load
+    window.addEventListener('resize', handleResize);
+    
+    // Initial animations
+    animateOnScroll();
+    
+    // Initialize with all projects visible
+    filterBtns[0].click();
 });
