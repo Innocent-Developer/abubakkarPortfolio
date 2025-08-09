@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://abubakkarsajid.github.io/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow specific files
+Disallow: /style.css
+Disallow: /script.js
+
+# Allow important directories
+Allow: /images/
+Allow: /assets/
+Allow: /docs/
+
+# Block common bots that might cause issues
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: dotbot
+Crawl-delay: 10 

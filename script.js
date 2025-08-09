@@ -405,16 +405,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Enhanced floating particles effect
-        createFloatingParticle(e.clientX, e.clientY);
-        
-        // Add cursor trail effect
-        createCursorTrail(e.clientX, e.clientY);
+        // Simple mouse tracking effect
+        // createParticle(e.clientX, e.clientY);
         
         requestAnimationFrame(smoothMouseMove);
     }
     
     smoothMouseMove();
+    
+    // Simple particle effect (commented out for clean design)
+    function createParticle(x, y) {
+        // Uncomment to enable simple particles
+        /*
+        if (Math.random() > 0.98) {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: var(--primary);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+                left: ${x}px;
+                top: ${y}px;
+                animation: fadeOut 2s ease-out forwards;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 2000);
+        }
+        */
+    }
     
     // Enhanced floating particles effect
     function createFloatingParticle(x, y) {
