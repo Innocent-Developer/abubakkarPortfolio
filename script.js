@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
             document.body.style.overflow = 'visible';
-        }, 1000);
+        }, 500); // Reduced from 1000ms to 500ms
     });
 
     // Mobile Menu Toggle with enhanced animations
@@ -555,31 +555,6 @@ document.addEventListener('DOMContentLoaded', function() {
         skillsObserver.observe(skillsSection);
     }
 
-    // Smooth reveal animation for sections
-    function revealOnScroll() {
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (sectionTop < windowHeight * 0.75) {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }
-        });
-    }
-
-    // Initialize sections with opacity 0
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    });
-
-    // Call reveal function on scroll
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial call
-
     // Enhanced typing effect for hero title
     function typeWriter(element, text, speed = 100) {
         let i = 0;
@@ -600,9 +575,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroTitle = document.querySelector('.hero-title');
         if (heroTitle) {
             const originalText = heroTitle.textContent;
-            typeWriter(heroTitle, originalText, 150);
+            typeWriter(heroTitle, originalText, 80); // Reduced from 150ms to 80ms
         }
-    }, 2000);
+    }, 800); // Reduced from 2000ms to 800ms
 
     // Particle effect for background
     function createParticles() {
@@ -695,6 +670,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add event listeners
     window.addEventListener('resize', handleResize);
+    
+    // Initialize sections with opacity 1 (always visible)
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0)';
+        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        section.style.visibility = 'visible';
+        section.style.display = 'block';
+    });
+
+    // Call reveal function on scroll
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Initial call
+
+    // Enhanced reveal function that ensures sections stay visible
+    function revealOnScroll() {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (sectionTop < windowHeight * 0.75) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+                section.style.visibility = 'visible';
+                section.style.display = 'block';
+            }
+        });
+    }
     
     // Initialize with all projects visible
     filterBtns[0].click();

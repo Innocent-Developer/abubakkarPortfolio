@@ -1,27 +1,38 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://abubakkarsajid.github.io/sitemap.xml
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
 
-# Crawl-delay
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow important files
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.pdf
+
+# Crawl delay (optional - be respectful to servers)
 Crawl-delay: 1
 
-# Disallow specific files
-Disallow: /style.css
-Disallow: /script.js
-
-# Allow important directories
-Allow: /images/
-Allow: /assets/
-Allow: /docs/
-
-# Block common bots that might cause issues
-User-agent: AhrefsBot
-Crawl-delay: 10
-
-User-agent: MJ12bot
-Crawl-delay: 10
-
-User-agent: dotbot
-Crawl-delay: 10 
+# Sitemap location
+Sitemap: https://abubakkar.online/sitemap.xml 

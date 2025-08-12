@@ -228,6 +228,16 @@ section {
   position: relative;
 }
 
+/* Ensure all sections are visible by default */
+section {
+  padding: 120px 0;
+  position: relative;
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
@@ -473,7 +483,7 @@ img.loaded {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.4s ease;
 }
 
 .loader {
@@ -668,7 +678,7 @@ img.loaded {
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;
-  animation: slideUpFade 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: slideUpFade 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   margin-right: 15px;
   transition: var(--transition);
 }
@@ -677,10 +687,10 @@ img.loaded {
   color: var(--primary);
 }
 
-.title-word-1 { animation-delay: 0.1s; }
-.title-word-2 { animation-delay: 0.2s; }
-.title-word-3 { animation-delay: 0.3s; }
-.title-word-4 { animation-delay: 0.4s; }
+.title-word-1 { animation-delay: 0.05s; }
+.title-word-2 { animation-delay: 0.1s; }
+.title-word-3 { animation-delay: 0.15s; }
+.title-word-4 { animation-delay: 0.2s; }
 
 @keyframes slideUpFade {
   to {
@@ -696,7 +706,7 @@ img.loaded {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: fadeInUp 1s ease 1.2s forwards;
+  animation: fadeInUp 0.3s ease 0.3s forwards;
   opacity: 0;
   transform: translateY(30px);
 }
@@ -705,7 +715,7 @@ img.loaded {
   font-size: 1.25rem;
   margin-bottom: 40px;
   max-width: 600px;
-  animation: fadeInUp 1s ease 1.5s forwards;
+  animation: fadeInUp 0.3s ease 0.4s forwards;
   opacity: 0;
   transform: translateY(30px);
   color: var(--text-secondary);
@@ -722,7 +732,7 @@ img.loaded {
 .hero-buttons {
   display: flex;
   gap: 25px;
-  animation: fadeInUp 1s ease 1.8s forwards;
+  animation: fadeInUp 0.3s ease 0.5s forwards;
   opacity: 0;
   transform: translateY(30px);
 }
@@ -1204,6 +1214,30 @@ img.loaded {
   margin: 20px;
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-light);
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  min-height: 600px;
+}
+
+.contact .section-header {
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.contact .contact-content {
+  display: grid !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.contact .contact-info,
+.contact .contact-form {
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .contact-content {
@@ -1285,7 +1319,7 @@ img.loaded {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--white);
+  color: var(--primary);
   transition: var(--transition);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -1294,6 +1328,7 @@ img.loaded {
 
 .social-link:hover {
   background: var(--primary-gradient);
+  color: var(--white);
   transform: translateY(-5px) scale(1.1);
   box-shadow: var(--shadow-medium);
 }
