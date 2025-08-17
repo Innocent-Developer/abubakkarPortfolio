@@ -4,22 +4,55 @@ Allow: /
 # Allow all major search engines
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
+Crawl-delay: 1
 
 User-agent: DuckDuckBot
 Allow: /
+Crawl-delay: 1
 
-# Disallow admin or private areas (if any)
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Disallow admin, private, or temporary areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.xml$ 
+Allow: /sitemap.xml
 
-# Allow important files
+# Allow important files and assets
 Allow: /sitemap.xml
 Allow: /robots.txt
 Allow: /*.css
@@ -29,10 +62,16 @@ Allow: /*.jpeg
 Allow: /*.png
 Allow: /*.gif
 Allow: /*.webp
+Allow: /*.svg
+Allow: /*.ico
 Allow: /*.pdf
+Allow: /*.woff
+Allow: /*.woff2
+Allow: /*.ttf
+Allow: /*.eot
 
-# Crawl delay (optional - be respectful to servers)
-Crawl-delay: 1
+# Sitemap locations
+Sitemap: https://abubakkar.online/sitemap.xml
 
-# Sitemap location
-Sitemap: https://abubakkar.online/sitemap.xml 
+# Host directive (helps search engines understand the preferred domain)
+Host: https://abubakkar.online 

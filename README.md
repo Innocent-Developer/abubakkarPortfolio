@@ -8,16 +8,20 @@ A modern, responsive portfolio website showcasing professional web development s
 - **Responsive Design**: Mobile-first approach with modern CSS Grid and Flexbox
 - **SEO Optimized**: Comprehensive meta tags, structured data, and semantic HTML
 - **Modern Animations**: Smooth, fast hero animations and interactive elements
+- **3D Graphics**: Advanced Three.js particle systems and 3D backgrounds
+- **Technologies Showcase**: Animated tech stack with logos, skill levels, and interactive tooltips
+- **Interactive 3D Effects**: Mouse-responsive particles, floating elements, and depth transforms
 - **Contact Form**: Integrated Web3Forms API for reliable contact functionality
 - **Performance**: Optimized images, CSS, and JavaScript for fast loading
 
 ## 🛠️ Technologies Used
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **3D Graphics**: Three.js for WebGL rendering and particle systems
 - **Styling**: Modern CSS with CSS Grid, Flexbox, and CSS Variables
-- **Animations**: CSS Animations and JavaScript for smooth interactions
+- **Animations**: CSS Animations, JavaScript, and Three.js for smooth interactions
 - **Forms**: Web3Forms API for contact form handling
-- **Icons**: Font Awesome 6.4.0
+- **Icons**: Font Awesome 6.4.0 + DevIcons
 - **Fonts**: Google Fonts (Poppins)
 
 ## 📱 Responsive Design
@@ -35,13 +39,34 @@ A modern, responsive portfolio website showcasing professional web development s
 - **Interactive Elements**: Hover effects and micro-interactions
 - **Dark/Light Theme Support**: CSS custom properties for easy theming
 
+## 🎮 3D Graphics & Animations
+
+### **Three.js Integration**
+- **Hero Particle System**: 800+ interactive particles with mouse tracking
+- **Tech Section 3D**: Floating geometric shapes with physics-based movement
+- **Real-time Rendering**: 60fps WebGL performance with optimizations
+- **Responsive 3D**: Adapts to different screen sizes and orientations
+
+### **Interactive Effects**
+- **Mouse Parallax**: Camera movement follows cursor for immersive experience
+- **3D Transforms**: Depth-based hover effects on all interactive elements
+- **Particle Physics**: Realistic movement with boundary collision detection
+- **Dynamic Lighting**: Ambient lighting effects on 3D objects
+
+### **Performance Optimization**
+- **Mobile Adaptive**: Reduced particle count and effects for mobile devices
+- **Efficient Rendering**: Uses requestAnimationFrame for smooth animations
+- **Memory Management**: Proper cleanup and disposal of 3D resources
+- **Progressive Enhancement**: Graceful fallback when WebGL is unavailable
+
 ## 🚀 Performance Optimizations
 
-- **Fast Preloader**: Reduced from 1s to 0.5s for better UX
+- **Fast Preloader**: Enhanced 3D loader with reduced loading time
 - **Optimized Animations**: Hero animations reduced from 1.8s to 0.5s total
 - **Image Optimization**: Lazy loading and fallback handling
 - **CSS Optimization**: Efficient selectors and minimal repaints
 - **JavaScript Performance**: Debounced scroll events and optimized animations
+- **3D Performance**: Optimized Three.js rendering with mobile adaptations
 
 ## 🔍 SEO Features
 
