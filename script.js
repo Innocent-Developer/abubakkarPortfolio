@@ -1,31 +1,73 @@
-// Modern Portfolio JavaScript with Advanced Animations
+// Enhanced Portfolio JavaScript with Performance Optimizations
 document.addEventListener('DOMContentLoaded', function () {
+    // Performance optimization flags
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isLowEnd = navigator.hardwareConcurrency <= 4 || window.innerWidth <= 480;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Preloader with enhanced animation
     const preloader = document.querySelector('.preloader');
     window.addEventListener('load', function () {
         setTimeout(function () {
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
-            document.body.style.overflow = 'visible';
-        }, 500); // Reduced from 1000ms to 500ms
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                document.body.style.overflow = 'visible';
+                // Remove preloader after animation to free memory
+                setTimeout(() => preloader.remove(), 300);
+            }
+        }, prefersReducedMotion ? 100 : 500);
     });
 
-    // Mobile Menu Toggle with enhanced animations
+    // Enhanced Mobile Menu with touch support
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navLinkItems = document.querySelectorAll('.nav-link');
 
-    hamburger.addEventListener('click', function () {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
+    if (hamburger && navLinks) {
+        // Add touch event handling for better mobile experience
+        const toggleMenu = () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
 
-        // Toggle body overflow when menu is open
-        if (navLinks.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    });
+            // Toggle body overflow and prevent scrolling when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                document.body.style.top = `-${window.scrollY}px`;
+                hamburger.setAttribute('aria-expanded', 'true');
+                navLinks.setAttribute('aria-hidden', 'false');
+            } else {
+                const scrollY = document.body.style.top;
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.body.style.top = '';
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+                hamburger.setAttribute('aria-expanded', 'false');
+                navLinks.setAttribute('aria-hidden', 'true');
+            }
+        };
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') &&
+                !hamburger.contains(e.target) &&
+                !navLinks.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+    }
 
     // Close mobile menu when clicking on links with smooth scroll
     navLinkItems.forEach(item => {
@@ -762,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Performance optimization: Throttle scroll events
+    // Enhanced Performance optimization with better throttling and debouncing
     function throttle(func, limit) {
         let inThrottle;
         return function () {
@@ -776,11 +818,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Optimized scroll handling based on device capabilities
+    const scrollLimit = isMobile || isLowEnd ? 32 : 16; // Adjust frame rate for performance
+
     // Apply throttling to scroll events
     window.addEventListener('scroll', throttle(function () {
-        // Existing scroll functionality
-        revealOnScroll();
-    }, 16)); // ~60fps
+        if (!prefersReducedMotion) {
+            revealOnScroll();
+        }
+    }, scrollLimit), { passive: true });
+
+    // Optimized resize handler
+    window.addEventListener('resize', debounce(handleResize, 250), { passive: true });
 
     // Enhanced image loading with fallback
     const images = document.querySelectorAll('img');
@@ -1890,12 +1951,138 @@ document.addEventListener('DOMContentLoaded', function () {
         measureFPS();
     }
 
-    // Initialize all 3D effects
+    // Touch gesture support for mobile
+    function initTouchGestures() {
+        if (!isMobile) return;
+
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Add swipe to close menu
+        if (navLinks) {
+            navLinks.addEventListener('touchstart', e => {
+                touchStartY = e.changedTouches[0].screenY;
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            navLinks.addEventListener('touchend', e => {
+                touchEndY = e.changedTouches[0].screenY;
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const deltaY = touchStartY - touchEndY;
+            const deltaX = touchStartX - touchEndX;
+
+            // Swipe right to close menu
+            if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX < 0 && navLinks.classList.contains('active')) {
+                    hamburger.click();
+                }
+            }
+        }
+
+        // Improved touch feedback for buttons
+        const touchElements = document.querySelectorAll('.btn, .nav-link, .social-link, .project-link, .filter-btn');
+        touchElements.forEach(element => {
+            element.addEventListener('touchstart', function () {
+                this.style.transform = 'scale(0.95)';
+            }, { passive: true });
+
+            element.addEventListener('touchend', function () {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            }, { passive: true });
+        });
+    }
+
+    // Lazy loading for performance
+    function initLazyLoading() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    }
+
+    // Enhanced smooth scrolling with better easing
+    function initSmoothScrolling() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (navLinks && navLinks.classList.contains('active')) {
+                        hamburger.click();
+                    }
+                }
+            });
+        });
+    }
+
+    // Service Worker for offline support (Progressive Web App features)
+    function initServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    }
+
+    // Initialize all enhancements
+    initTouchGestures();
+    initLazyLoading();
+    initSmoothScrolling();
+
+    // Initialize 3D effects with performance checks
     setTimeout(() => {
-        initThreeJSAnimations();
-        init3DSectionTransitions();
+        if (!isLowEnd && !prefersReducedMotion) {
+            initThreeJSAnimations();
+            init3DSectionTransitions();
+        }
         optimizeForMobile();
         initPerformanceMonitoring();
-    }, 1000); // Small delay to ensure DOM is ready
+        initServiceWorker();
+    }, prefersReducedMotion ? 0 : 1000);
 
 });
