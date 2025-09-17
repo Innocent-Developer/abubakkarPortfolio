@@ -1,0 +1,20 @@
+{
+  "name": "my-cvs",
+  "version": "1.0.0",
+  "description": "A modern, responsive portfolio website showcasing professional web development skills and projects.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Innocent-Developer/abubakkarPortfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Innocent-Developer/abubakkarPortfolio/issues"
+  },
+  "homepage": "https://github.com/Innocent-Developer/abubakkarPortfolio#readme"
+}
