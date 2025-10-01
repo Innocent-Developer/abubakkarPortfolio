@@ -266,6 +266,27 @@ section {
   visibility: visible !important;
 }
 
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+  
+  /* Reduce animations on mobile */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Disable complex animations */
+  .floating-techs,
+  .particles,
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -529,6 +550,25 @@ img.loaded {
   transition: opacity 0.4s ease;
   perspective: 1000px;
   transform-style: preserve-3d;
+}
+
+/* Hide preloader on mobile devices immediately */
+@media (max-width: 768px) {
+  .preloader {
+    display: none !important;
+  }
+  
+  /* Ensure body is visible on mobile */
+  body {
+    overflow: visible !important;
+  }
+  
+  /* Force sections to be visible immediately on mobile */
+  section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
 }
 
 .loader {
@@ -796,6 +836,15 @@ img.loaded {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Hide 3D canvases on mobile for better performance */
+@media (max-width: 768px) {
+  .hero-3d-bg,
+  .tech-3d-bg,
+  .section-3d-bg {
+    display: none !important;
+  }
 }
 
 .hero-3d-bg {

@@ -1,23 +1,56 @@
 // Enhanced Portfolio JavaScript with Performance Optimizations
+// Immediate mobile optimization - show content right away on mobile
+const isMobileCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+if (isMobileCheck) {
+    document.documentElement.style.setProperty('--preloader-display', 'none');
+    document.body.style.overflow = 'visible';
+    // Force all sections to be visible immediately
+    const style = document.createElement('style');
+    style.textContent = `
+        .preloader { display: none !important; }
+        section { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+        body { overflow: visible !important; }
+    `;
+    document.head.appendChild(style);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Performance optimization flags
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const isLowEnd = navigator.hardwareConcurrency <= 4 || window.innerWidth <= 480;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isSlowDevice = isMobile || isLowEnd || navigator.connection?.effectiveType === '2g' || navigator.connection?.effectiveType === '3g';
 
     // Preloader with enhanced animation
     const preloader = document.querySelector('.preloader');
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            if (preloader) {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                document.body.style.overflow = 'visible';
-                // Remove preloader after animation to free memory
-                setTimeout(() => preloader.remove(), 300);
-            }
-        }, prefersReducedMotion ? 100 : 500);
-    });
+    
+    // Hide preloader immediately on mobile/slow devices
+    if (isSlowDevice) {
+        if (preloader) {
+            preloader.style.display = 'none';
+            document.body.style.overflow = 'visible';
+        }
+    } else {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    document.body.style.overflow = 'visible';
+                    // Remove preloader after animation to free memory
+                    setTimeout(() => preloader.remove(), 300);
+                }
+            }, prefersReducedMotion ? 100 : 500);
+        });
+    }
+    
+    // Fallback: Hide preloader after 3 seconds regardless
+    setTimeout(() => {
+        if (preloader && preloader.style.display !== 'none') {
+            preloader.style.display = 'none';
+            document.body.style.overflow = 'visible';
+        }
+    }, 3000);
 
     // Enhanced Mobile Menu with touch support
     const hamburger = document.querySelector('.hamburger');
@@ -417,64 +450,63 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Enhanced mouse move effect for hero with advanced cursor tracking and smoothness
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetMouseX = 0;
-    let targetMouseY = 0;
+    // Enhanced mouse move effect for hero with advanced cursor tracking and smoothness (skip on mobile)
+    if (!isSlowDevice && !prefersReducedMotion) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetMouseX = 0;
+        let targetMouseY = 0;
 
-    document.addEventListener('mousemove', function (e) {
-        targetMouseX = e.clientX / window.innerWidth;
-        targetMouseY = e.clientY / window.innerHeight;
-    });
+        document.addEventListener('mousemove', function (e) {
+            targetMouseX = e.clientX / window.innerWidth;
+            targetMouseY = e.clientY / window.innerHeight;
+        });
 
-    function smoothMouseMove() {
-        mouseX += (targetMouseX - mouseX) * 0.1;
-        mouseY += (targetMouseY - mouseY) * 0.1;
+        function smoothMouseMove() {
+            mouseX += (targetMouseX - mouseX) * 0.1;
+            mouseY += (targetMouseY - mouseY) * 0.1;
 
-        const heroContent = document.querySelector('.hero-content');
-        const heroTitle = document.querySelector('.hero-title');
-        const heroSubtitle = document.querySelector('.hero-subtitle');
-        const heroText = document.querySelector('.hero-text');
-        const heroButtons = document.querySelector('.hero-buttons');
-        const titleWords = document.querySelectorAll('.title-word');
+            const heroContent = document.querySelector('.hero-content');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroText = document.querySelector('.hero-text');
+            const heroButtons = document.querySelector('.hero-buttons');
+            const titleWords = document.querySelectorAll('.title-word');
 
-        if (heroContent) {
-            // Enhanced parallax effect for hero content with smooth interpolation
-            heroContent.style.transform = `translate(${mouseX * 25}px, ${mouseY * 25}px) rotate(${mouseX * 3}deg)`;
+            if (heroContent) {
+                // Enhanced parallax effect for hero content with smooth interpolation
+                heroContent.style.transform = `translate(${mouseX * 25}px, ${mouseY * 25}px) rotate(${mouseX * 3}deg)`;
 
-            // Individual element animations with different speeds and smoothness
-            if (heroTitle) {
-                heroTitle.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px) scale(${1 + mouseX * 0.15})`;
+                // Individual element animations with different speeds and smoothness
+                if (heroTitle) {
+                    heroTitle.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px) scale(${1 + mouseX * 0.15})`;
+                }
+
+                // Animate each title word individually with smooth interpolation
+                titleWords.forEach((word, index) => {
+                    const speed = 1 + index * 0.3;
+                    const rotation = mouseX * 8 * speed;
+                    word.style.transform = `translate(${mouseX * 15 * speed}px, ${mouseY * 15 * speed}px) rotate(${rotation}deg)`;
+                });
+
+                if (heroSubtitle) {
+                    heroSubtitle.style.transform = `translate(${mouseX * -15}px, ${mouseY * -15}px) scale(${1 + Math.abs(mouseX) * 0.08})`;
+                }
+
+                if (heroText) {
+                    heroText.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px) rotate(${mouseX * -2}deg)`;
+                }
+
+                if (heroButtons) {
+                    heroButtons.style.transform = `translate(${mouseX * -20}px, ${mouseY * -20}px) scale(${1 + Math.abs(mouseY) * 0.15})`;
+                }
             }
 
-            // Animate each title word individually with smooth interpolation
-            titleWords.forEach((word, index) => {
-                const speed = 1 + index * 0.3;
-                const rotation = mouseX * 8 * speed;
-                word.style.transform = `translate(${mouseX * 15 * speed}px, ${mouseY * 15 * speed}px) rotate(${rotation}deg)`;
-            });
-
-            if (heroSubtitle) {
-                heroSubtitle.style.transform = `translate(${mouseX * -15}px, ${mouseY * -15}px) scale(${1 + Math.abs(mouseX) * 0.08})`;
-            }
-
-            if (heroText) {
-                heroText.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px) rotate(${mouseX * -2}deg)`;
-            }
-
-            if (heroButtons) {
-                heroButtons.style.transform = `translate(${mouseX * -20}px, ${mouseY * -20}px) scale(${1 + Math.abs(mouseY) * 0.15})`;
-            }
+            requestAnimationFrame(smoothMouseMove);
         }
 
-        // Simple mouse tracking effect
-        // createParticle(e.clientX, e.clientY);
-
-        requestAnimationFrame(smoothMouseMove);
+        smoothMouseMove();
     }
-
-    smoothMouseMove();
 
     // Simple particle effect (commented out for clean design)
     function createParticle(x, y) {
@@ -642,8 +674,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 200); // Reduced from 800ms to 200ms
 
-    // Particle effect for background
+    // Particle effect for background (skip on mobile/slow devices)
     function createParticles() {
+        if (isSlowDevice || prefersReducedMotion) {
+            return; // Skip particles on mobile/slow devices
+        }
+        
         const particlesContainer = document.createElement('div');
         particlesContainer.className = 'particles';
         particlesContainer.style.cssText = `
@@ -658,7 +694,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.body.appendChild(particlesContainer);
 
-        for (let i = 0; i < 50; i++) {
+        const particleCount = isMobile ? 20 : 50; // Reduce particles on mobile
+        for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.style.cssText = `
                 position: absolute;
@@ -690,8 +727,10 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 
-    // Initialize particles
-    createParticles();
+    // Initialize particles (skip on mobile/slow devices)
+    if (!isSlowDevice && !prefersReducedMotion) {
+        createParticles();
+    }
 
     // Enhanced hover effects for project items
     projectItems.forEach(item => {
@@ -1019,8 +1058,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize custom cursor on desktop
-    if (window.innerWidth > 768) {
+    // Initialize custom cursor on desktop only (not on mobile/slow devices)
+    if (window.innerWidth > 768 && !isSlowDevice && !prefersReducedMotion) {
         createCustomCursor();
     }
 
@@ -1200,10 +1239,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize all technologies animations
-    initTechnologiesAnimations();
-    initTechCategoriesAnimation();
-    initTechTooltips();
+    // Initialize all technologies animations (with mobile optimizations)
+    if (isSlowDevice || prefersReducedMotion) {
+        // Simplified animations for mobile
+        initTechnologiesAnimations();
+    } else {
+        // Full animations for desktop
+        initTechnologiesAnimations();
+        initTechCategoriesAnimation();
+        initTechTooltips();
+    }
 
     // Add tech section to navigation observer
     const techSection = document.querySelector('#technologies');
@@ -1213,31 +1258,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Technologies section navigation is already handled by existing scroll logic
     }
 
-    // Initialize Three.js 3D Animations
-    function initThreeJSAnimations() {
-        // Check if Three.js is loaded
-        if (typeof THREE === 'undefined') {
-            console.log('Three.js not loaded, skipping 3D animations');
-            return;
-        }
-
-        // Initialize Hero 3D Background
-        initHero3DBackground();
-
-        // Initialize Technologies 3D Background
-        initTech3DBackground();
-
-        // Initialize About 3D Background
-        initAbout3DBackground();
-
-        // Initialize Skills 3D Background
-        initSkills3DBackground();
-
-        // Initialize Projects 3D Background
-        initProjects3DBackground();
-
-        // Initialize Contact 3D Background
-        initContact3DBackground();
+    // Initialize Three.js 3D Animations (skip on mobile/slow devices)
+    if (!isSlowDevice && !prefersReducedMotion) {
+        // Delay 3D animations to not block initial load
+        setTimeout(() => {
+            initThreeJSAnimations();
+        }, 1000);
     }
 
     // Hero Section 3D Background
