@@ -616,7 +616,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (skillsSection) {
         skillsObserver.observe(skillsSection);
-    }
+    };
 
     // Enhanced typing effect for hero title
     function typeWriter(element, text, speed = 50) {
