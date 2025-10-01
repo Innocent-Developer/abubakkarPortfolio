@@ -132,7 +132,7 @@ my-cvs/
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Innocent-Developer/abubakkarPortfolio.git
-   cd my-cvs
+   cd abubakkarPortfolio
    ```
 
 2. **Open in browser**
