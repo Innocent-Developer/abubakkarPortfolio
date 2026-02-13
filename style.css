@@ -628,42 +628,55 @@ img {
   padding-top: 6rem;
 }
 
-/* ---------- Skills ---------- */
+/* ---------- Skills & Expertise ---------- */
+.skills .section-desc {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .skills-grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1.25rem;
   max-width: 720px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
 }
 
 .skill-item {
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.5rem;
   background: var(--bg-card);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
   min-width: 0;
+  width: 100%;
 }
-.skill-item:hover { border-color: var(--accent-dim); }
+.skill-item:hover {
+  border-color: var(--accent-dim);
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
 
 .skills-grid-page {
   max-width: 720px;
+  grid-template-columns: 1fr;
 }
 
 .skill-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
 
 .skill-name {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 1rem;
   min-width: 0;
   flex: 1 1 auto;
   word-wrap: break-word;
@@ -671,17 +684,20 @@ img {
 }
 
 .skill-pct {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--accent-light);
   flex-shrink: 0;
+  min-width: 2.5rem;
+  text-align: right;
 }
 
 .skill-track {
-  height: 6px;
+  height: 8px;
   background: var(--bg-elevated);
   border-radius: 999px;
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .skill-fill {
@@ -691,8 +707,18 @@ img {
   background: var(--gradient-accent);
   border-radius: 999px;
   transition: width 1s ease-out;
+  box-shadow: 0 0 12px var(--accent-dim);
 }
 .skill-item.visible .skill-fill { width: var(--fill-width, 0); }
+
+.skills-note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
 
 /* ---------- Projects ---------- */
 .projects-filter {
@@ -815,6 +841,21 @@ img {
   .services-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* 7 services: one per row on mobile, 2 then 3 columns */
+.services-grid-rows {
+  grid-template-columns: 1fr;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .services-grid-rows { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 992px) {
+  .services-grid-rows { grid-template-columns: repeat(3, 1fr); max-width: 1100px; }
+}
+
 .service-card {
   padding: 2rem 1.5rem;
   background: var(--bg-card);
@@ -935,6 +976,32 @@ img {
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+.timeline-list {
+  list-style: none;
+  margin-top: 0.75rem;
+  padding-left: 0;
+}
+
+.timeline-list li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  padding-left: 1.25rem;
+  margin-bottom: 0.35rem;
+  position: relative;
+}
+
+.timeline-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-light);
+  border-radius: 50%;
 }
 
 /* ---------- Client Reviews (one row, left-to-right marquee) ---------- */
