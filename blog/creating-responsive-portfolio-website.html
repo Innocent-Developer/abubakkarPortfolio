@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Step-by-Step Tutorial: Creating a Responsive Portfolio Website | Abubakkar Sajid</title>
+    <meta name="title" content="Step-by-Step Tutorial: Creating a Responsive Portfolio Website | Abubakkar Sajid">
+    <meta name="description" content="Learn how to build a modern, responsive portfolio website with HTML, CSS, and JavaScript. Includes responsive design, animations, SEO best practices, and deployment tips. Complete tutorial for developers.">
+    <meta name="keywords" content="portfolio website tutorial, responsive portfolio, HTML CSS portfolio, developer portfolio, portfolio website design, responsive web design, portfolio SEO">
+    <meta name="author" content="Abubakkar Sajid">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="language" content="English">
+    <meta name="article:published_time" content="2025-02-13">
+    <meta name="article:author" content="Abubakkar Sajid">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://abubakkar.online/blog/creating-responsive-portfolio-website.html">
+    <meta property="og:title" content="Step-by-Step Tutorial: Creating a Responsive Portfolio Website">
+    <meta property="og:description" content="Learn how to build a modern, responsive portfolio website with HTML, CSS, and JavaScript. Complete tutorial for developers.">
+    <meta property="og:image" content="https://abubakkar.online/abubakkar.jpg">
+    <meta property="og:site_name" content="Abubakkar Sajid Portfolio">
+    <meta property="article:published_time" content="2025-02-13">
+    <meta property="article:author" content="https://abubakkar.online/about.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Step-by-Step Tutorial: Creating a Responsive Portfolio Website">
+    <meta name="twitter:description" content="Learn how to build a modern, responsive portfolio website with HTML, CSS, and JavaScript.">
+    <meta name="twitter:creator" content="@dev_abubakkar">
+
+    <link rel="canonical" href="https://abubakkar.online/blog/creating-responsive-portfolio-website.html">
+    <link rel="icon" type="image/x-icon" href="../abubakkar.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Step-by-Step Tutorial: Creating a Responsive Portfolio Website",
+        "description": "Learn how to build a modern, responsive portfolio website with HTML, CSS, and JavaScript. Includes responsive design, animations, SEO best practices.",
+        "url": "https://abubakkar.online/blog/creating-responsive-portfolio-website.html",
+        "datePublished": "2025-02-13",
+        "dateModified": "2025-02-13",
+        "author": { "@type": "Person", "name": "Abubakkar Sajid", "url": "https://abubakkar.online/" },
+        "publisher": { "@type": "Person", "name": "Abubakkar Sajid", "url": "https://abubakkar.online/" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abubakkar.online/blog/creating-responsive-portfolio-website.html" },
+        "inLanguage": "en-US"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://abubakkar.online/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://abubakkar.online/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "Creating a Responsive Portfolio Website", "item": "https://abubakkar.online/blog/creating-responsive-portfolio-website.html" }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <div class="bg-3d" aria-hidden="true">
+        <div class="bg-gradient-mesh"></div>
+        <div class="bg-3d-grid"></div>
+        <div class="bg-3d-grid bg-3d-grid-2"></div>
+        <div class="bg-3d-orb bg-3d-orb-1"></div>
+        <div class="bg-3d-orb bg-3d-orb-2"></div>
+        <div class="bg-3d-orb bg-3d-orb-3"></div>
+        <div class="bg-3d-orb bg-3d-orb-4"></div>
+        <div class="bg-3d-orb bg-3d-orb-5"></div>
+        <div class="bg-3d-sphere bg-3d-sphere-1"></div>
+        <div class="bg-3d-sphere bg-3d-sphere-2"></div>
+        <div class="bg-3d-sphere bg-3d-sphere-3"></div>
+        <div class="bg-3d-cube"></div>
+        <div class="bg-particles">
+            <span class="bg-particle"></span><span class="bg-particle"></span><span class="bg-particle"></span>
+            <span class="bg-particle"></span><span class="bg-particle"></span><span class="bg-particle"></span>
+            <span class="bg-particle"></span><span class="bg-particle"></span><span class="bg-particle"></span>
+            <span class="bg-particle"></span><span class="bg-particle"></span><span class="bg-particle"></span>
+        </div>
+        <div class="bg-lines"></div>
+    </div>
+    <header class="header" role="banner">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
+            <a href="../index.html" class="nav-logo" aria-label="Abubakkar Sajid - Home">AS</a>
+            <ul class="nav-links" id="nav-links" role="menubar">
+                <li role="none"><a href="../index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="../about.html" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="../skills.html" class="nav-link" role="menuitem">Skills</a></li>
+                <li role="none"><a href="../projects.html" class="nav-link" role="menuitem">Projects</a></li>
+                <li role="none"><a href="../services.html" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="../experience.html" class="nav-link" role="menuitem">Experience</a></li>
+                <li role="none"><a href="index.html" class="nav-link active" role="menuitem">Blog</a></li>
+                <li role="none"><a href="../index.html#reviews" class="nav-link" role="menuitem">Reviews</a></li>
+                <li role="none"><a href="../contact.html" class="nav-link" role="menuitem">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+                    <span class="theme-icon sun" aria-hidden="true"></span>
+                    <span class="theme-icon moon" aria-hidden="true"></span>
+                </button>
+                <a href="https://wa.me/923241851476" class="btn btn-nav" target="_blank" rel="noopener noreferrer">Hire Me</a>
+            </div>
+            <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+        </nav>
+    </header>
+    <main id="main">
+        <article class="section article-page" aria-labelledby="article-title">
+            <div class="container container-narrow">
+                <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span aria-hidden="true">/</span>
+                    <a href="index.html">Blog</a>
+                    <span aria-hidden="true">/</span>
+                    <span>Creating a Responsive Portfolio Website</span>
+                </nav>
+                <header class="article-header reveal">
+                    <div class="article-meta-row">
+                        <span class="article-meta">Tutorial · Feb 13, 2025</span>
+                        <span class="article-read-time">8 min read</span>
+                    </div>
+                    <h1 id="article-title" class="article-title">Step-by-Step Tutorial: Creating a Responsive Portfolio Website</h1>
+                    <p class="article-excerpt">Learn how to build a modern, responsive portfolio website with HTML, CSS, and JavaScript—including responsive design, animations, and SEO best practices.</p>
+                    <p class="article-author">By <a href="../about.html">Abubakkar Sajid</a> · Full Stack Developer</p>
+                </header>
+                <div class="article-body reveal">
+                    <p>A portfolio website is one of the most effective tools for developers, designers, and creatives to showcase their work, attract clients, and establish their personal brand. Whether you're a full stack developer, a React specialist, or a freelance web developer in Pakistan, a well-crafted responsive portfolio can set you apart. In this comprehensive tutorial, you'll learn how to build a modern, responsive portfolio from scratch using HTML, CSS, and vanilla JavaScript—no frameworks required.</p>
+
+                    <h2>Why You Need a Responsive Portfolio Website</h2>
+                    <p>According to hiring managers and clients, a professional portfolio is often the first thing they review. A responsive portfolio website demonstrates your technical skills, attention to detail, and commitment to user experience. It works seamlessly on desktop, tablet, and mobile—critical in a world where over 60% of traffic comes from mobile devices.</p>
+
+                    <h2>1. Planning Your Portfolio Structure</h2>
+                    <p>Before writing a single line of code, plan your site structure. A typical developer portfolio includes:</p>
+                    <ul>
+                        <li><strong>Hero Section</strong> – Name, title, and a clear value proposition</li>
+                        <li><strong>About</strong> – Brief bio, skills, and what makes you unique</li>
+                        <li><strong>Skills & Expertise</strong> – Technologies you work with (React, Node.js, MERN stack)</li>
+                        <li><strong>Projects</strong> – Showcase your best work with live links and descriptions</li>
+                        <li><strong>Experience</strong> – Work history, internships, freelance projects</li>
+                        <li><strong>Client Reviews</strong> – Testimonials to build trust</li>
+                        <li><strong>Contact</strong> – Email, social links, and optionally a contact form</li>
+                    </ul>
+                    <p>Keep navigation simple—7–9 links max. Each section should have a clear purpose and CTA (Call to Action).</p>
+
+                    <h2>2. HTML Structure & Semantics</h2>
+                    <p>Use semantic HTML5 elements so search engines and assistive technologies understand your content: <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>. Add proper ARIA labels (<code>aria-labelledby</code>, <code>aria-label</code>) for accessibility. Include a skip link for keyboard users: <code>&lt;a href="#main" class="skip-link"&gt;Skip to main content&lt;/a&gt;</code>.</p>
+                    <p>Structure headings logically (H1 → H2 → H3). Your H1 should be your name or tagline, with H2s for each major section.</p>
+
+                    <h2>3. Responsive Design with CSS</h2>
+                    <p>Mobile-first CSS ensures your portfolio looks great on all devices:</p>
+                    <ul>
+                        <li><strong>Fluid typography</strong> – Use <code>clamp(15px, 2vw, 16px)</code> for base font size</li>
+                        <li><strong>Layouts</strong> – CSS Grid and Flexbox for flexible, responsive layouts</li>
+                        <li><strong>Breakpoints</strong> – 400px, 640px, 768px, 992px for phones, tablets, and desktops</li>
+                        <li><strong>Viewport</strong> – Always include <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></li>
+                        <li><strong>Fixed header</strong> – Use <code>scroll-padding-top</code> so anchored links don't hide under the navbar</li>
+                    </ul>
+
+                    <h2>4. Animations & Interactions</h2>
+                    <p>Subtle animations improve perceived quality without hurting performance. Use <code>IntersectionObserver</code> to reveal content as users scroll—no jQuery needed. Add hover effects on project cards and buttons. Implement smooth scrolling with <code>scroll-behavior: smooth</code>. Crucially, respect <code>prefers-reduced-motion: reduce</code>—disable or simplify animations for users who prefer less motion.</p>
+
+                    <h2>5. SEO Best Practices for Your Portfolio</h2>
+                    <p>Search engine optimization helps clients find you when they search for "full stack developer Pakistan" or "React developer Lahore":</p>
+                    <ul>
+                        <li><strong>Meta tags</strong> – Unique title (50–60 chars), description (150–160 chars), keywords</li>
+                        <li><strong>Open Graph & Twitter Card</strong> – For rich previews when sharing on LinkedIn, Twitter, Facebook</li>
+                        <li><strong>Canonical URL</strong> – Avoid duplicate content</li>
+                        <li><strong>JSON-LD Schema</strong> – Person, WebSite, CreativeWork for rich snippets</li>
+                        <li><strong>Sitemap</strong> – sitemap.xml listing all pages</li>
+                        <li><strong>robots.txt</strong> – Allow indexing, reference sitemap</li>
+                    </ul>
+
+                    <h2>6. Performance & Deployment</h2>
+                    <p>Fast-loading portfolios convert better. Optimize images with <code>loading="lazy"</code>, use WebP where supported, and compress assets. Minify CSS and JS for production. Deploy to Vercel, Netlify, or GitHub Pages—all offer free hosting and HTTPS. Use <code>preconnect</code> for Google Fonts to reduce latency.</p>
+
+                    <h2>FAQ: Responsive Portfolio Websites</h2>
+                    <h3>How long does it take to build a portfolio website?</h3>
+                    <p>With this tutorial, a basic responsive portfolio can be built in 1–2 days. Adding polish, animations, and SEO takes another 1–2 days.</p>
+                    <h3>Do I need React or Next.js for a portfolio?</h3>
+                    <p>No. HTML, CSS, and vanilla JavaScript are sufficient and often load faster. Use React or Next.js if you want to showcase those skills specifically.</p>
+                    <h3>How do I get my portfolio to rank on Google?</h3>
+                    <p>Follow the SEO steps above, create a <a href="index.html">blog</a> with relevant content (e.g., MERN stack, React tips), and get backlinks from LinkedIn, GitHub, and client sites.</p>
+
+                    <p>Want a professional portfolio built for you? <a href="../contact.html">Get in touch</a>—I build responsive, SEO-optimized portfolios for developers and creatives in Pakistan and internationally.</p>
+                </div>
+                <footer class="article-footer reveal">
+                    <a href="index.html" class="btn btn-secondary">← Back to Blog</a>
+                    <a href="../contact.html" class="btn btn-primary">Hire Me for Your Project</a>
+                </footer>
+            </div>
+        </article>
+    </main>
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <a href="../index.html" class="footer-logo">Abubakkar Sajid</a>
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                    <a href="../skills.html">Skills</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../services.html">Services</a>
+                    <a href="../experience.html">Experience</a>
+                    <a href="index.html">Blog</a>
+                    <a href="../index.html#reviews">Reviews</a>
+                    <a href="../contact.html">Contact</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://github.com/Innocent-Developer/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                    <a href="https://www.linkedin.com/in/mughal-abubakkar/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="https://www.facebook.com/devabubakkarsajid" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+                    <a href="https://www.instagram.com/dev_abubakkar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; <span id="year">2025</span> Abubakkar Sajid. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/923241851476" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+    <a href="#main" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+    <script src="../script.js"></script>
+</body>
+</html>
