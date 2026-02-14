@@ -70,6 +70,155 @@ body {
   color: var(--text-primary);
   background: var(--bg-base);
   overflow-x: hidden;
+  position: relative;
+}
+
+/* ---------- 3D Background ---------- */
+.bg-3d {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-3d-grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(500px) rotateX(60deg) translateY(20%);
+  transform-origin: center top;
+  animation: bg-grid-drift 30s linear infinite;
+}
+
+[data-theme="light"] .bg-3d-grid {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+}
+
+@keyframes bg-grid-drift {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(20%) translateZ(0); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(20%) translateZ(-60px); }
+}
+
+.bg-3d-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: bg-orb-float 20s ease-in-out infinite;
+}
+
+.bg-3d-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.bg-3d-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+  top: 40%;
+  right: -8%;
+  animation-delay: -5s;
+}
+
+.bg-3d-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+  bottom: -5%;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+.bg-3d-orb-4 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+  top: 60%;
+  left: -3%;
+  animation-delay: -15s;
+}
+
+@keyframes bg-orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-20px, 30px) scale(0.95); }
+  75% { transform: translate(20px, 20px) scale(1.02); }
+}
+
+.bg-3d-sphere {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.2), transparent);
+  animation: bg-sphere-float 25s ease-in-out infinite;
+}
+
+.bg-3d-sphere-1 {
+  width: 120px;
+  height: 120px;
+  top: 15%;
+  right: 20%;
+  animation-delay: 0s;
+}
+
+.bg-3d-sphere-2 {
+  width: 80px;
+  height: 80px;
+  bottom: 25%;
+  left: 15%;
+  animation-delay: -8s;
+}
+
+.bg-3d-sphere-3 {
+  width: 60px;
+  height: 60px;
+  top: 70%;
+  right: 35%;
+  animation-delay: -16s;
+}
+
+@keyframes bg-sphere-float {
+  0%, 100% { transform: translate(0, 0) rotateY(0deg); }
+  33% { transform: translate(15px, -25px) rotateY(120deg); }
+  66% { transform: translate(-20px, 15px) rotateY(240deg); }
+}
+
+.bg-3d-cube {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 10%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  transform: perspective(800px) rotateX(15deg) rotateY(25deg);
+  animation: bg-cube-spin 40s linear infinite;
+}
+
+@keyframes bg-cube-spin {
+  0% { transform: perspective(800px) rotateX(15deg) rotateY(0deg); }
+  100% { transform: perspective(800px) rotateX(15deg) rotateY(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-3d-grid,
+  .bg-3d-orb,
+  .bg-3d-sphere,
+  .bg-3d-cube { animation: none; }
+  .hero-badge { animation: none; }
+  .section-title span { animation: none; }
+  .whatsapp-float { animation: none; }
 }
 
 /* Skip link */
@@ -150,7 +299,9 @@ img {
   color: #fff;
   box-shadow: 0 4px 14px var(--accent-dim);
 }
-.btn-primary:hover { box-shadow: 0 6px 20px var(--accent-dim); }
+.btn-primary:hover {
+  box-shadow: 0 6px 24px var(--accent-dim), 0 0 50px rgba(99, 102, 241, 0.25);
+}
 
 .btn-secondary {
   background: var(--bg-card);
@@ -351,6 +502,11 @@ img {
   border-radius: 999px;
   margin-bottom: 1.25rem;
   backdrop-filter: blur(8px);
+  animation: hero-badge-glow 3s ease-in-out infinite;
+}
+@keyframes hero-badge-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.25); }
 }
 
 .hero-title {
@@ -452,10 +608,16 @@ img {
 }
 
 .section-title span {
-  background: var(--gradient-accent);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: section-title-shimmer 5s ease-in-out infinite;
+}
+@keyframes section-title-shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 
 .section-desc {
@@ -536,6 +698,11 @@ img {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.about-image-wrap:hover {
+  transform: perspective(800px) rotateY(-5deg) rotateX(3deg) scale(1.02);
+  box-shadow: var(--shadow-lg), 0 25px 50px -15px rgba(99, 102, 241, 0.25);
 }
 .about-image-wrap::before {
   content: '';
@@ -790,10 +957,12 @@ img {
   border-radius: var(--radius-lg);
   overflow: hidden;
   backdrop-filter: blur(12px);
+  transform-style: preserve-3d;
+  perspective: 1000px;
   transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .project-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: perspective(1000px) rotateX(-4deg) rotateY(4deg) translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-lg), 0 20px 40px -15px rgba(99, 102, 241, 0.2);
   border-color: var(--accent-dim);
 }
@@ -942,10 +1111,11 @@ img {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .service-card:hover {
-  transform: translateY(-4px);
+  transform: perspective(800px) rotateX(-3deg) rotateY(3deg) translateY(-4px);
   border-color: var(--accent-dim);
   box-shadow: var(--shadow-md);
 }
@@ -1039,10 +1209,25 @@ img {
 }
 
 .timeline-date {
-  display: inline-block;
+  display: block;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent-light);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-company {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.timeline-location {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
 
@@ -1057,6 +1242,13 @@ img {
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+.timeline-content a {
+  color: var(--accent-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.timeline-content a:hover { opacity: 0.9; }
 
 .timeline-list {
   list-style: none;
@@ -1149,8 +1341,12 @@ img {
   .review-card { width: 280px; min-width: 280px; max-width: 280px; min-height: 240px; padding: 1.5rem 1.25rem; }
 }
 
+.review-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+}
 .review-card:hover {
-  transform: translateY(-4px);
+  transform: perspective(800px) rotateX(-3deg) rotateY(3deg) translateY(-4px);
   border-color: var(--accent-dim);
   box-shadow: var(--shadow-md);
 }
@@ -1406,24 +1602,38 @@ img {
   color: var(--text-muted);
 }
 
-/* ---------- WhatsApp float ---------- */
+/* ---------- WhatsApp float (icon button) ---------- */
 .whatsapp-float {
   position: fixed;
   bottom: 5rem;
   right: 1.5rem;
   z-index: 999;
-  padding: 0.6rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 600;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  background: #25d366;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition), box-shadow var(--transition);
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, background 0.3s ease;
+  animation: whatsapp-pulse 2.5s ease-in-out infinite;
+}
+.whatsapp-float svg {
+  flex-shrink: 0;
 }
 .whatsapp-float:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5), 0 0 0 8px rgba(37, 211, 102, 0.15);
+  background: linear-gradient(135deg, #34e077 0%, #25d366 100%);
+}
+.whatsapp-float:active {
+  transform: scale(1.05) translateY(-1px);
+}
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.5); }
 }
 
 /* ---------- Back to top ---------- */
@@ -1452,7 +1662,8 @@ img {
 }
 .back-to-top:hover {
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 6px 20px var(--accent-dim);
 }
 
 @media (max-width: 480px) {
