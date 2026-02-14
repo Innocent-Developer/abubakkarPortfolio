@@ -52,7 +52,7 @@
       if (!target) return;
       a.addEventListener('click', function (e) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
         var nav = document.getElementById('nav-links');
         var ham = document.getElementById('hamburger');
         if (nav && nav.classList.contains('open')) {
