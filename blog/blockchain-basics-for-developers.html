@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Optimize Your React.js UI for Better User Experience | Abubakkar Sajid</title>
-    <meta name="description" content="Learn how to optimize React.js UI for better UX: code splitting, lazy loading, memoization, performance tips, and responsive design patterns. Complete guide for React developers.">
-    <meta name="keywords" content="React.js optimization, React UI performance, React UX, code splitting React, lazy loading React, React performance tips">
+    <title>Blockchain Basics for Developers: Smart Contracts & Web3 | Abubakkar Sajid</title>
+    <meta name="description" content="Introduction to blockchain for developers: smart contracts, Solidity, Web3.js, and building dApps. Learn blockchain concepts and how they apply to modern development.">
+    <meta name="keywords" content="blockchain development, smart contracts, Solidity, Web3, Ethereum, dApps, decentralized apps">
     <meta name="author" content="Abubakkar Sajid">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="article:published_time" content="2025-02-13">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://abubakkar.online/blog/react-ui-optimization.html">
-    <meta property="og:title" content="How to Optimize Your React.js UI for Better User Experience">
-    <meta property="og:description" content="Learn how to optimize React.js UI for better UX: code splitting, lazy loading, memoization, and performance tips.">
+    <meta property="og:url" content="https://abubakkar.online/blog/blockchain-basics-for-developers.html">
+    <meta property="og:title" content="Blockchain Basics for Developers: Smart Contracts & Web3">
+    <meta property="og:description" content="Introduction to blockchain, smart contracts, and Web3 for developers.">
     <meta property="og:image" content="https://abubakkar.online/abubakkar.jpg">
     <meta property="og:site_name" content="Abubakkar Sajid Portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Optimize Your React.js UI for Better User Experience">
-    <meta name="twitter:description" content="Optimize React.js UI for better UX with code splitting, lazy loading, memoization, and performance tips.">
+    <meta name="twitter:title" content="Blockchain Basics for Developers: Smart Contracts & Web3">
+    <meta name="twitter:description" content="Blockchain and smart contracts for developers.">
     <meta name="twitter:creator" content="@dev_abubakkar">
-    <link rel="canonical" href="https://abubakkar.online/blog/react-ui-optimization.html">
+    <link rel="canonical" href="https://abubakkar.online/blog/blockchain-basics-for-developers.html">
     <link rel="icon" type="image/x-icon" href="../abubakkar.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Optimize Your React.js UI for Better User Experience","description":"Learn how to optimize React.js UI for better UX: code splitting, lazy loading, memoization, and performance tips.","url":"https://abubakkar.online/blog/react-ui-optimization.html","datePublished":"2025-02-13","dateModified":"2025-02-13","author":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"publisher":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"inLanguage":"en-US"}
+    {"@context":"https://schema.org","@type":"Article","headline":"Blockchain Basics for Developers: Smart Contracts & Web3","description":"Introduction to blockchain, smart contracts, and Web3 for developers.","url":"https://abubakkar.online/blog/blockchain-basics-for-developers.html","datePublished":"2025-02-13","dateModified":"2025-02-13","author":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"publisher":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"inLanguage":"en-US"}
     </script>
 </head>
 <body class="page-article-read">
@@ -79,41 +79,36 @@
                 <nav class="article-breadcrumb" aria-label="Breadcrumb">
                     <a href="../index.html">Home</a> <span aria-hidden="true">/</span>
                     <a href="index.html">Blog</a> <span aria-hidden="true">/</span>
-                    <span>React UI Optimization</span>
+                    <span>Blockchain Basics</span>
                 </nav>
                 <header class="article-header reveal">
                     <div class="article-meta-row">
-                        <span class="article-meta">React · Feb 13, 2025</span>
-                        <span class="article-read-time">5 min read</span>
+                        <span class="article-meta">Blockchain · Feb 13, 2025</span>
+                        <span class="article-read-time">7 min read</span>
                     </div>
-                    <h1 id="article-title" class="article-title">How to Optimize Your React.js UI for Better User Experience</h1>
-                    <p class="article-excerpt">Learn how to optimize your React.js application for better performance and UX: code splitting, lazy loading, memoization, and responsive design patterns.</p>
+                    <h1 id="article-title" class="article-title">Blockchain Basics for Developers: Smart Contracts & Web3</h1>
+                    <p class="article-excerpt">A practical introduction to blockchain technology for developers: distributed ledgers, smart contracts, Solidity, and building decentralized applications with Web3.</p>
                     <p class="article-author">By <a href="../about.html">Abubakkar Sajid</a> · Full Stack Developer</p>
                 </header>
                 <div class="article-body article-body-read reveal">
-                    <p>React.js powers millions of web applications, but slow load times and janky interfaces hurt user experience. In this guide, you'll learn practical techniques to optimize your React UI for better performance, responsiveness, and UX.</p>
+                    <p>Blockchain is more than cryptocurrency—it's a distributed ledger that enables trustless applications. As a developer, understanding smart contracts and Web3 can open doors to dApps, NFTs, and DeFi. Here’s a concise overview.</p>
 
-                    <h2>1. Code Splitting & Lazy Loading</h2>
-                    <p>Load only what users need. Use <code>React.lazy()</code> and <code>Suspense</code> to split routes and heavy components:</p>
-                    <p><code>const Dashboard = React.lazy(() => import('./Dashboard'));</code></p>
-                    <p>Wrap lazy components in <code>&lt;Suspense fallback={&lt;Loading /&gt;}&gt;</code>. This reduces initial bundle size and improves Time to Interactive (TTI). Use dynamic <code>import()</code> for route-based splitting with React Router.</p>
+                    <h2>1. What Is a Blockchain?</h2>
+                    <p>A blockchain is a linked list of blocks, each containing transactions or data, secured by cryptography. Once written, data is hard to alter, which gives immutability and transparency. Nodes in the network agree on new blocks via consensus (e.g. Proof of Work, Proof of Stake).</p>
 
-                    <h2>2. Memoization with useMemo and useCallback</h2>
-                    <p>Prevent unnecessary re-renders. Use <code>useMemo</code> for expensive computations and <code>useCallback</code> for functions passed to child components. Wrap pure components with <code>React.memo()</code> to avoid re-renders when props haven't changed.</p>
+                    <h2>2. Smart Contracts</h2>
+                    <p>Smart contracts are programs that run on a blockchain. On Ethereum, they’re written in <code>Solidity</code>. When conditions are met, the contract executes automatically—no middleman. Use cases: tokens, voting, escrow, and automated payments.</p>
 
-                    <h2>3. Virtualization for Long Lists</h2>
-                    <p>For lists with hundreds or thousands of items, use <code>react-window</code> or <code>react-virtualized</code>. They render only visible rows, dramatically improving performance and scroll smoothness.</p>
+                    <h2>3. Solidity in a Nutshell</h2>
+                    <p>Solidity is statically typed and similar to JavaScript. You define state variables, functions, and modifiers. Always validate inputs and use established patterns (e.g. OpenZeppelin) to avoid reentrancy and overflow bugs.</p>
 
-                    <h2>4. Image & Asset Optimization</h2>
-                    <p>Use WebP, lazy load images with <code>loading="lazy"</code>, and serve responsive images with <code>srcset</code>. Consider Next.js <code>Image</code> component or similar solutions for automatic optimization.</p>
+                    <h2>4. Web3 and Front-End Integration</h2>
+                    <p>Web3 libraries (e.g. <code>ethers.js</code>, <code>web3.js</code>) let your front end connect to wallets (MetaMask) and interact with smart contracts. You send transactions and read contract state via RPC endpoints.</p>
 
-                    <h2>5. Responsive & Accessible Design</h2>
-                    <p>Use CSS media queries, Flexbox, and Grid for responsive layouts. Ensure touch targets are at least 44x44px. Add ARIA labels and test with keyboard navigation. Respect <code>prefers-reduced-motion</code> for animations.</p>
+                    <h2>5. dApps and UX</h2>
+                    <p>Decentralized apps combine a normal UI (React, etc.) with blockchain backend. Users sign transactions with their wallet. Design for gas fees, wait times, and clear error messages so non-crypto users aren’t lost.</p>
 
-                    <h2>6. State Management Best Practices</h2>
-                    <p>Keep state close to where it's used. Use Context sparingly—it triggers re-renders for all consumers. Consider React Query or SWR for server state; they handle caching and deduplication automatically.</p>
-
-                    <p>Need help optimizing your React app? <a href="../contact.html">Contact me</a>—I build fast, accessible React applications for businesses.</p>
+                    <p>Interested in blockchain-based projects? <a href="../contact.html">Get in touch</a>—I can help you design and integrate smart contracts and Web3 into your stack.</p>
                 </div>
                 <footer class="article-footer reveal">
                     <a href="index.html" class="btn btn-secondary">← Back to Blog</a>

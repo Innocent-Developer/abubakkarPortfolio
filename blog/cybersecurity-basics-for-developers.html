@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Optimize Your React.js UI for Better User Experience | Abubakkar Sajid</title>
-    <meta name="description" content="Learn how to optimize React.js UI for better UX: code splitting, lazy loading, memoization, performance tips, and responsive design patterns. Complete guide for React developers.">
-    <meta name="keywords" content="React.js optimization, React UI performance, React UX, code splitting React, lazy loading React, React performance tips">
+    <title>Cybersecurity Basics for Developers: Secure Your Apps | Abubakkar Sajid</title>
+    <meta name="description" content="Essential cybersecurity for developers: OWASP Top 10, secure auth, HTTPS, input validation, and secure deployment. Protect your web applications.">
+    <meta name="keywords" content="cybersecurity developers, OWASP, secure coding, authentication security, HTTPS, XSS, CSRF">
     <meta name="author" content="Abubakkar Sajid">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="article:published_time" content="2025-02-13">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://abubakkar.online/blog/react-ui-optimization.html">
-    <meta property="og:title" content="How to Optimize Your React.js UI for Better User Experience">
-    <meta property="og:description" content="Learn how to optimize React.js UI for better UX: code splitting, lazy loading, memoization, and performance tips.">
+    <meta property="og:url" content="https://abubakkar.online/blog/cybersecurity-basics-for-developers.html">
+    <meta property="og:title" content="Cybersecurity Basics for Developers: Secure Your Apps">
+    <meta property="og:description" content="Essential cybersecurity for developers: OWASP, secure auth, and deployment.">
     <meta property="og:image" content="https://abubakkar.online/abubakkar.jpg">
     <meta property="og:site_name" content="Abubakkar Sajid Portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Optimize Your React.js UI for Better User Experience">
-    <meta name="twitter:description" content="Optimize React.js UI for better UX with code splitting, lazy loading, memoization, and performance tips.">
+    <meta name="twitter:title" content="Cybersecurity Basics for Developers: Secure Your Apps">
+    <meta name="twitter:description" content="Cybersecurity basics every developer should know.">
     <meta name="twitter:creator" content="@dev_abubakkar">
-    <link rel="canonical" href="https://abubakkar.online/blog/react-ui-optimization.html">
+    <link rel="canonical" href="https://abubakkar.online/blog/cybersecurity-basics-for-developers.html">
     <link rel="icon" type="image/x-icon" href="../abubakkar.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"How to Optimize Your React.js UI for Better User Experience","description":"Learn how to optimize React.js UI for better UX: code splitting, lazy loading, memoization, and performance tips.","url":"https://abubakkar.online/blog/react-ui-optimization.html","datePublished":"2025-02-13","dateModified":"2025-02-13","author":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"publisher":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"inLanguage":"en-US"}
+    {"@context":"https://schema.org","@type":"Article","headline":"Cybersecurity Basics for Developers: Secure Your Apps","description":"Essential cybersecurity for developers: OWASP, secure auth, and deployment.","url":"https://abubakkar.online/blog/cybersecurity-basics-for-developers.html","datePublished":"2025-02-13","dateModified":"2025-02-13","author":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"publisher":{"@type":"Person","name":"Abubakkar Sajid","url":"https://abubakkar.online/"},"inLanguage":"en-US"}
     </script>
 </head>
 <body class="page-article-read">
@@ -79,41 +79,36 @@
                 <nav class="article-breadcrumb" aria-label="Breadcrumb">
                     <a href="../index.html">Home</a> <span aria-hidden="true">/</span>
                     <a href="index.html">Blog</a> <span aria-hidden="true">/</span>
-                    <span>React UI Optimization</span>
+                    <span>Cybersecurity Basics</span>
                 </nav>
                 <header class="article-header reveal">
                     <div class="article-meta-row">
-                        <span class="article-meta">React · Feb 13, 2025</span>
-                        <span class="article-read-time">5 min read</span>
+                        <span class="article-meta">Cybersecurity · Feb 13, 2025</span>
+                        <span class="article-read-time">7 min read</span>
                     </div>
-                    <h1 id="article-title" class="article-title">How to Optimize Your React.js UI for Better User Experience</h1>
-                    <p class="article-excerpt">Learn how to optimize your React.js application for better performance and UX: code splitting, lazy loading, memoization, and responsive design patterns.</p>
+                    <h1 id="article-title" class="article-title">Cybersecurity Basics for Developers: Secure Your Apps</h1>
+                    <p class="article-excerpt">Every developer should know the basics: OWASP Top 10, secure authentication, HTTPS, input validation, and safe deployment. Here’s a concise checklist.</p>
                     <p class="article-author">By <a href="../about.html">Abubakkar Sajid</a> · Full Stack Developer</p>
                 </header>
                 <div class="article-body article-body-read reveal">
-                    <p>React.js powers millions of web applications, but slow load times and janky interfaces hurt user experience. In this guide, you'll learn practical techniques to optimize your React UI for better performance, responsiveness, and UX.</p>
+                    <p>Security can’t be an afterthought. A single vulnerability can compromise user data and your reputation. This guide covers the essentials every web developer should apply.</p>
 
-                    <h2>1. Code Splitting & Lazy Loading</h2>
-                    <p>Load only what users need. Use <code>React.lazy()</code> and <code>Suspense</code> to split routes and heavy components:</p>
-                    <p><code>const Dashboard = React.lazy(() => import('./Dashboard'));</code></p>
-                    <p>Wrap lazy components in <code>&lt;Suspense fallback={&lt;Loading /&gt;}&gt;</code>. This reduces initial bundle size and improves Time to Interactive (TTI). Use dynamic <code>import()</code> for route-based splitting with React Router.</p>
+                    <h2>1. OWASP Top 10 Awareness</h2>
+                    <p>Familiarize yourself with the <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">OWASP Top 10</a>: broken access control, cryptographic failures, injection (SQL, NoSQL, command), insecure design, misconfiguration, vulnerable components, auth failures, data integrity failures, security logging failures, and SSRF. Prioritize injection and broken access control—they’re among the most common.</p>
 
-                    <h2>2. Memoization with useMemo and useCallback</h2>
-                    <p>Prevent unnecessary re-renders. Use <code>useMemo</code> for expensive computations and <code>useCallback</code> for functions passed to child components. Wrap pure components with <code>React.memo()</code> to avoid re-renders when props haven't changed.</p>
+                    <h2>2. Authentication & Sessions</h2>
+                    <p>Use proven auth libraries (e.g. Passport, NextAuth) and never store plain-text passwords—always hash with bcrypt or Argon2. Use HTTPS only and secure, HttpOnly cookies for sessions. Implement rate limiting and account lockout to reduce brute-force risk.</p>
 
-                    <h2>3. Virtualization for Long Lists</h2>
-                    <p>For lists with hundreds or thousands of items, use <code>react-window</code> or <code>react-virtualized</code>. They render only visible rows, dramatically improving performance and scroll smoothness.</p>
+                    <h2>3. Input Validation & Output Encoding</h2>
+                    <p>Validate and sanitize all input on the server. Use parameterized queries or ORMs to prevent SQL injection. Escape output for the context (HTML, URL, JavaScript) to prevent XSS. Consider a strict Content-Security-Policy header.</p>
 
-                    <h2>4. Image & Asset Optimization</h2>
-                    <p>Use WebP, lazy load images with <code>loading="lazy"</code>, and serve responsive images with <code>srcset</code>. Consider Next.js <code>Image</code> component or similar solutions for automatic optimization.</p>
+                    <h2>4. HTTPS and Headers</h2>
+                    <p>Enforce HTTPS and set security headers: <code>Strict-Transport-Security</code>, <code>X-Content-Type-Options: nosniff</code>, <code>X-Frame-Options</code>, and <code>Content-Security-Policy</code>. Keep dependencies and server configs updated.</p>
 
-                    <h2>5. Responsive & Accessible Design</h2>
-                    <p>Use CSS media queries, Flexbox, and Grid for responsive layouts. Ensure touch targets are at least 44x44px. Add ARIA labels and test with keyboard navigation. Respect <code>prefers-reduced-motion</code> for animations.</p>
+                    <h2>5. Secrets and Environment</h2>
+                    <p>Never commit API keys or secrets. Use environment variables and secret managers. Rotate credentials periodically and limit access to production.</p>
 
-                    <h2>6. State Management Best Practices</h2>
-                    <p>Keep state close to where it's used. Use Context sparingly—it triggers re-renders for all consumers. Consider React Query or SWR for server state; they handle caching and deduplication automatically.</p>
-
-                    <p>Need help optimizing your React app? <a href="../contact.html">Contact me</a>—I build fast, accessible React applications for businesses.</p>
+                    <p>Need a security review or secure architecture for your app? <a href="../contact.html">Get in touch</a>—I build and audit web applications with security in mind.</p>
                 </div>
                 <footer class="article-footer reveal">
                     <a href="index.html" class="btn btn-secondary">← Back to Blog</a>

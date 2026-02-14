@@ -1037,16 +1037,72 @@ img {
 
 .blog-card-coming .blog-card-label { opacity: 0.8; }
 
-/* Article page (read view) */
+/* Article page (read view) – ready/read-form styling */
 .container-narrow {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .article-page {
   padding-top: 6rem;
   padding-bottom: 4rem;
+}
+
+/* Read-form: focused reading layout when viewing an article */
+body.page-article-read .bg-3d-orb,
+body.page-article-read .bg-3d-sphere,
+body.page-article-read .bg-particles {
+  opacity: 0.4;
+}
+
+.article-read-form .article-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.article-body-read,
+.article-page .article-body {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.article-body-read p,
+.article-page .article-body p {
+  margin-bottom: 1.25rem;
+}
+
+.article-body-read h2,
+.article-page .article-body h2 {
+  font-size: 1.35rem;
+  margin: 2.25rem 0 0.85rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding-bottom: 0.25rem;
+}
+
+.article-body-read h3,
+.article-page .article-body h3 {
+  font-size: 1.15rem;
+  margin: 1.75rem 0 0.6rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.article-page .article-body {
+  padding: 0.5rem 0;
+}
+
+.article-read-form .article-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-border);
 }
 
 .article-breadcrumb {
