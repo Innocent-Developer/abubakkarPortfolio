@@ -79,31 +79,47 @@
     });
   }
 
-  // ----- Sticky header + active nav link -----
+  // ----- Sticky header + active nav link (avoids forced reflow via rAF + cached positions) -----
   function initHeader() {
     var header = document.querySelector('.header');
     var navLinks = document.querySelectorAll('.nav-link');
     var sections = document.querySelectorAll('section[id]');
+    var sectionRects = [];
+    var rafId = null;
 
-    function onScroll() {
-      if (header) header.classList.toggle('scrolled', window.scrollY > 40);
-
-      var scrollY = window.scrollY + 120;
-      var current = '';
+    function updateSectionRects() {
+      sectionRects = [];
       sections.forEach(function (section) {
-        var top = section.offsetTop;
-        var height = section.offsetHeight;
-        if (scrollY >= top && scrollY < top + height) current = section.id;
+        var r = section.getBoundingClientRect();
+        sectionRects.push({ id: section.id, top: r.top + window.scrollY, height: r.height });
       });
-      if (sections.length > 0) {
-        navLinks.forEach(function (link) {
-          var href = link.getAttribute('href') || '';
-          var hash = href.indexOf('#') >= 0 ? href.substring(href.indexOf('#')) : href;
-          link.classList.toggle('active', hash === '#' + current);
-        });
-      }
     }
 
+    function onScroll() {
+      if (rafId) return;
+      rafId = requestAnimationFrame(function () {
+        rafId = null;
+        if (header) header.classList.toggle('scrolled', window.scrollY > 40);
+
+        var scrollY = window.scrollY + 120;
+        var current = '';
+        for (var i = 0; i < sectionRects.length; i++) {
+          var r = sectionRects[i];
+          if (scrollY >= r.top && scrollY < r.top + r.height) { current = r.id; break; }
+        }
+        if (sections.length > 0) {
+          navLinks.forEach(function (link) {
+            var href = link.getAttribute('href') || '';
+            var hash = href.indexOf('#') >= 0 ? href.substring(href.indexOf('#')) : href;
+            link.classList.toggle('active', hash === '#' + current);
+          });
+        }
+      });
+    }
+
+    updateSectionRects();
+    window.addEventListener('resize', updateSectionRects);
+    window.addEventListener('load', updateSectionRects);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }

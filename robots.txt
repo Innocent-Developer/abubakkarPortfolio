@@ -4,6 +4,6 @@ Allow: /
 # Sitemap
 Sitemap: https://abubakkar.online/sitemap.xml
 
-# Optional: disallow non-public paths if they exist
+# Disallow non-public paths
 Disallow: /admin/
 Disallow: /.git/
