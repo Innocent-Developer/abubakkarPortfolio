@@ -150,24 +150,27 @@
     setTimeout(type, delayStart);
   }
 
-  // ----- IntersectionObserver: reveal + skill bars -----
+  // ----- IntersectionObserver: reveal + stagger (data-delay) + skill bars -----
   function initReveal() {
     var revealEls = document.querySelectorAll('.reveal');
-    var skillItems = document.querySelectorAll('.skill-item');
+    var skillItems = document.querySelectorAll('.skill-item, .skill-card');
+    var sections = document.querySelectorAll('section[id].section');
 
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('visible');
+          var el = entry.target;
+          el.classList.add('visible');
+          var delay = parseInt(el.getAttribute('data-delay'), 10);
+          if (!isNaN(delay)) el.style.transitionDelay = delay + 'ms';
 
-          // Skill bar: set --fill-width and animate percentage
-          if (entry.target.classList.contains('skill-item')) {
-            var fill = entry.target.querySelector('.skill-fill');
-            var pct = entry.target.querySelector('.skill-pct');
+          if (el.classList.contains('skill-item') || el.classList.contains('skill-card')) {
+            var fill = el.querySelector('.skill-fill');
+            var pct = el.querySelector('.skill-pct');
             if (fill) {
               var w = fill.getAttribute('data-width') || '0';
-              entry.target.style.setProperty('--fill-width', w + '%');
+              el.style.setProperty('--fill-width', w + '%');
             }
             if (pct) {
               var targetPct = parseInt(pct.getAttribute('data-pct'), 10) || 0;
@@ -176,15 +179,48 @@
           }
         });
       },
-      { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
+      { rootMargin: '0px 0px -50px 0px', threshold: 0.08 }
     );
 
-    revealEls.forEach(function (el) {
-      observer.observe(el);
-    });
-    skillItems.forEach(function (el) {
-      observer.observe(el);
-    });
+    var sectionObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('scroll-in');
+        });
+      },
+      { rootMargin: '0px 0px -15% 0px', threshold: 0 }
+    );
+
+    revealEls.forEach(function (el) { observer.observe(el); });
+    skillItems.forEach(function (el) { observer.observe(el); });
+    sections.forEach(function (s) { sectionObserver.observe(s); });
+  }
+
+  // ----- Scroll progress bar (hidden when reduced motion) -----
+  function initScrollProgress() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function update() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = h <= 0 ? 0 : (window.scrollY / h) * 100;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('load', update);
+    update();
+  }
+
+  // ----- Subtle hero parallax (respects reduced motion) -----
+  function initHeroParallax() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var heroInner = document.querySelector('.hero .hero-inner');
+    if (!heroInner) return;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      var rate = Math.min(y * 0.12, 60);
+      heroInner.style.transform = 'translateY(' + rate + 'px)';
+    }, { passive: true });
   }
 
   function animateNumber(el, from, to, duration) {
@@ -205,15 +241,22 @@
 
     btns.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        btns.forEach(function (b) {
-          b.classList.remove('active');
-        });
+        btns.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
         var filter = btn.getAttribute('data-filter');
+        var delay = 0;
         cards.forEach(function (card) {
           var cat = card.getAttribute('data-category');
           var show = filter === 'all' || cat === filter;
-          card.classList.toggle('hide', !show);
+          if (show) {
+            card.classList.remove('hide');
+            card.style.transitionDelay = delay * 55 + 'ms';
+            delay++;
+          } else {
+            card.classList.add('hide');
+            card.style.transitionDelay = '0ms';
+            delay = 0;
+          }
         });
       });
     });
@@ -362,6 +405,8 @@
     initHeader();
     initTyping();
     initReveal();
+    initScrollProgress();
+    initHeroParallax();
     initProjectFilter();
     initContactForm();
     initBackToTop();
