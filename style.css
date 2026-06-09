@@ -2200,6 +2200,15 @@ body.page-article-read {
   margin-bottom: 0.15rem;
 }
 
+.timeline-company-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 0.35rem;
+  object-fit: contain;
+}
+
 .timeline-location {
   display: block;
   font-size: 0.8rem;
